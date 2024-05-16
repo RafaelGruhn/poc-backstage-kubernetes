@@ -7,7 +7,9 @@ metadata:
     - java
     - data
   annotations:
-    "backstage.io/kubernetes-cluster": "c1"
+    "backstage.io/kubernetes-cluster":
+      - "c1"
+      - "minikube"
     "backstage.io/kubernetes-namespace": "default"
     "backstage.io/kubernetes-label-selector": "app=hello-node"
 spec:
