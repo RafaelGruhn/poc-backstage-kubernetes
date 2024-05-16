@@ -49,20 +49,20 @@ backend:
         paths:
           - /api/graphql/schema
 
-integrations:
-  github:
-    - host: github.com
-      token: ${GITHUB_TOKEN}
+# integrations:
+#   github:
+#     - host: github.com
+#       token: ${GITHUB_TOKEN}
 
 auth:
   environment: development
   providers:
     guest:
       userEntityRef: user:default/guest
-    github:
-      development:
-        clientId: ${GITHUB_DEVELOPMENT_CLIENT_ID}
-        clientSecret: ${GITHUB_DEVELOPMENT_CLIENT_SECRET}
+    # github:
+    #   development:
+    #     clientId: ${GITHUB_DEVELOPMENT_CLIENT_ID}
+    #     clientSecret: ${GITHUB_DEVELOPMENT_CLIENT_SECRET}
 
 catalog:
   readonly: true
@@ -105,6 +105,9 @@ catalog:
     - type: url
       target: https://github.com/mclarke47/dice-roller/blob/master/catalog-info.yaml
 
+    - type: url
+      target: https://github.com/RafaelGruhn/poc-backstage-kubernetes/blob/master/poc-backstage-kubernetes.yaml
+
     # Demo Software Template
     - type: file
       target: ../../demo-template/template/template.yaml
@@ -114,8 +117,8 @@ catalog:
     backstage:
       enabled: false
       schedule:
-        frequency: { hours: 12 }
-        timeout: { minutes: 30 }
+        frequency: { minutes: 1 }
+        timeout: { minutes: 1 }
 
 costInsights:
   engineerCost: 200000
@@ -146,13 +149,20 @@ techdocs:
   publisher:
     type: 'local'
 
+# app-config.yaml
 kubernetes:
   serviceLocatorMethod:
     type: 'multiTenant'
   clusterLocatorMethods:
     - type: 'config'
-      clusters: []
-
+      clusters:
+        - url: <CLUSTER URL>
+          name: <CLUSTER ID>
+          authProvider: 'serviceAccount'
+          skipTLSVerify: false # Optional, defaults to false
+          skipMetricsLookup: false # Optional, defaults to false
+          serviceAccountToken: <SERVICE ACCOUNT TOKEN>
+          caData: <CERTIFICATE>
 explore:
   tools:
     - title: 'Tech Radar'

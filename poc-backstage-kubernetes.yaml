@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: poc-backstage-kubernetes
+  description: poc backstage kubernetes
+  tags:
+    - java
+    - data
+  annotations:
+    "backstage.io/kubernetes-id": "c1"
+    "backstage.io/kubernetes-namespace": "default"
+    "backstage.io/kubernetes-label-selector": "app=hello-node"
+spec:
+  type: service
+  lifecycle: production
+  owner: guest
