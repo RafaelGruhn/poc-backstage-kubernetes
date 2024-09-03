@@ -1,16 +1,15 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: poc-backstage-kubernetes
-  description: poc backstage kubernetes
+  name: poc-backstage-kubernetes2
+  description: poc backstage kubernetes2
   tags:
     - java
     - data
   annotations:
-    # "backstage.io/kubernetes-cluster": "minikube"
-    "backstage.io/kubernetes-id": "minikube"
-    "backstage.io/kubernetes-namespace": "default"
-    "backstage.io/kubernetes-label-selector": "app=hello-node"
+    'backstage.io/kubernetes-cluster': 'akspriv-dxttools-prd'
+    'backstage.io/kubernetes-namespace': 'dev-centric-sit'
+    "backstage.io/kubernetes-label-selector": "app=backstage-app"
 spec:
   type: service
   lifecycle: production
